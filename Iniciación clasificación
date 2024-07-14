@@ -6,12 +6,12 @@
 
 #Código a usar en un WSL de Linux, en este caso se usó Ubuntu.
 
-kraken2 #Establece el software a usar, en este caso, Kraken2.
+kraken2                                                               #Establece el software a usar, en este caso, Kraken2.
 --use-names                                                           #Establece el uso de los nombres de los organismos asociados a cada secuencia en vez del taxid ID.
 --report-zero-counts                                                  #Permite la aparición de aquellas secuencias o organismos en los ficheros de salidas que posean 0 lecturas asociadas a ella.
 --gzip-compressed                                                     #Permite el uso de un archivo gzip como el fasta a clasificar.
---output  localización/archivosoutputkraken2/nombredearchivo                 #Permite definir localización y nombre del output, uno de los ficheros de salida de Kraken2.
---report localización/archivosreportkraken2/nombredearchivo                  #Permite definir localización y nombre del report, el otro posible fichero de salida de Kraken2.
+--output  localización/archivosoutputkraken2/nombredearchivo          #Permite definir localización y nombre del output, uno de los ficheros de salida de Kraken2.
+--report localización/archivosreportkraken2/nombredearchivo           #Permite definir localización y nombre del report, el otro posible fichero de salida de Kraken2.
 --db standard8                                                        #Esta instrucción es usada para definir la base de datos a utilizar, en este caso es la database standard de Kraken2 capada a 8 gb.
 --threads 8                                                           #Permite el número de threads o subprocesos simultáneos que se llevan a cabo al correr el código, un mayor valor permite una mayor velocidad de clasifiación.
 --confidence 0.25                                                     #La instrucción que permite crear variabilidad en los resultados y que nos permite ahondar en la calidad de la clasificación mediante la alternancia de diferentes valores de confianza.
