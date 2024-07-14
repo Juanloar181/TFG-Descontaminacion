@@ -1,10 +1,10 @@
 ##############################################################
 ####### Clasificación taxonómica de datos metagenómicos#######      
-###################    Kraken2   #############################
-########### Clasificación taxonómica usando Kraken2###########
+######################    Kraken2    #########################
+########### Clasificación taxonómica usando Kraken2 ##########
 ##############################################################
 
-#Código a usar en un WSL de Linux, en este caso, se usó Ubuntu.
+#Código a usar en un WSL de Linux, en este caso se usó Ubuntu.
 
 kraken2 #Establece el software a usar, en este caso, Kraken2.
 --use-names #Establece el uso de los nombres de los organismos asociados a cada secuencia en vez del taxid ID.
