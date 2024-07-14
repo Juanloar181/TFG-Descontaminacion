@@ -25,7 +25,7 @@ plot(0, 0, type = "n", xlim = c(0, 1), ylim = c(0, 1), xlab = "False Positive Ra
 colores <- c("red", "blue", "green", "hotpink1", "purple", "orange", "grey", "olivedrab1", "turquoise2", "gray42")
 
 
-# Función para agregar predicciones y performance
+# Función para agregar predicciones y performance, inicializando ROCR en sí y permitiendo la graficación.
 agregar_curva <- function(predicciones, color) {
     perf <- performance(predicciones, "tpr", "fpr")
     plot(perf, col = color, add = TRUE)
@@ -34,28 +34,30 @@ agregar_curva <- function(predicciones, color) {
 }
 
 
-# Lista de predicciones y etiquetas
+# Lista de predicciones, en primer lugar se convierte la columna del dataframe que determina el porcentaje en un vector, más tarde se hace lo mismo sobre la columna que determina con valores de 1 o 0 si el dato pertenece a la serie control o a la muestra.
+# na.omit determina que los valores no válidos o no legibles por R se omitan.
 predicciones <- list(
-    prediction(as.vector(na.omit(df10species$b0confidence10threshold)), as.vector(na.omit(df10species$label0c10t))),
-    prediction(as.vector(na.omit(df10species$b0confidence100threshold)), as.vector(na.omit(df10species$label0c100t))),
-    prediction(as.vector(na.omit(df10species$b01confidence10threshold)), as.vector(na.omit(df10species$label01c10t))),
-    prediction(as.vector(na.omit(df10species$b025confidence10threshold)), as.vector(na.omit(df10species$label025c10t))),
-    prediction(as.vector(na.omit(df10species$b025confidence100threshold)), as.vector(na.omit(df10species$labelc025t100))),
-    prediction(as.vector(na.omit(df10species$b05confidence10threshold)), as.vector(na.omit(df10species$label05c10t))),
-    prediction(as.vector(na.omit(df10species$b05confidence100threshold)), as.vector(na.omit(df10species$labelc05t100)))
+    prediction(as.vector(na.omit(df$b0confidence10threshold)), as.vector(na.omit(df$label0c10t))),
+    prediction(as.vector(na.omit(df$b0confidence100threshold)), as.vector(na.omit(df$label0c100t))),
+    prediction(as.vector(na.omit(df$b01confidence10threshold)), as.vector(na.omit(df$label01c10t))),
+    prediction(as.vector(na.omit(df$b025confidence10threshold)), as.vector(na.omit(df$label025c10t))),
+    prediction(as.vector(na.omit(df$b025confidence100threshold)), as.vector(na.omit(df$labelc025t100))),
+    prediction(as.vector(na.omit(df$b05confidence10threshold)), as.vector(na.omit(df$label05c10t))),
+    prediction(as.vector(na.omit(df$b05confidence100threshold)), as.vector(na.omit(df$labelc05t100)))
     
     
 )
+#Lista de etiquetas o nombres para distinguir a los distintas series de datos a clasificar.
 
 etiquetas_base <- c("c0 thres 10", "c0 thres 100", "c01 thres 10", "c025 thres 10", "c025 thres 100","c05 thres 10", "c05 thres 100"  )
 
 
-# Calcular y agregar AUC a las etiquetas
+# Calcular y agregar AUC a las etiquetas, el AUC es calculado automáticamente por el paquete ROCR.
 etiquetas <- sapply(1:length(predicciones), function(i) {
     auc <- agregar_curva(predicciones[[i]], colores[i])
     paste(etiquetas_base[i], ":", auc)
 })
 
 
-# Agregar la leyenda con AUC
+# Agregar la leyenda con AUC, esta leyenda contiene la lista creada antes con el nombre "etiquetas", se puede modificar su posición en el texto además de tamaño de letra y colores.
 legend("bottomright", legend = etiquetas, col = colores, lty = 1, cex = 0.5, ncol = 1, bty = "n")
