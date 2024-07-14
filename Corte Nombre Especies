@@ -1,10 +1,10 @@
 ##############################################################
 ####### Clasificación taxonómica de datos metagenómicos#######      
-###################    Kraken2   #############################
-########### Clasificación taxonómica usando Kraken2###########
+######################    Kraken2    #########################
+########### Clasificación taxonómica usando Kraken2 ##########
 ##############################################################
 
-#Código a usar en un WSL de Linux, en este caso, se usó Ubuntu.
+#Código a usar en un WSL de Linux, en este caso se usó Ubuntu.
 
 
 grep -P "\tS\t" localizacion/de/archivo/nombrearchivo   #Esta parte del comando busca líneas en el archivo indicado que contienen el patrón \tS\t.  \t representa un carácter de tabulación, por lo que \tS\t coincide con líneas que contienen la letra "S" rodeada de caracteres de tabulación
