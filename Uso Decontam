@@ -1,0 +1,16 @@
+##############################################################
+###### Evaluación de clasificación mediante curvas ROC #######      
+#########################   ROCR   ###########################
+########### Clasificación taxonómica usando Kraken2 ##########
+##############################################################
+
+#Código a usar en R
+
+abund<-read.table("C:/Users/MiPC/OneDrive/Escritorio/TFG/Abundanciadecontam/10species_Abundance.tsv", sep="\t", header = T, row.names=1)
+otu_genus <- as.matrix(abund)
+otu_genus <- otu_genus[,2:9]
+otu_genus <- t(otu_genus)
+dim(abund)
+quant_reading_FU<-colSums(abund[,2:9])
+results_FU <- isContaminant(otu_genus, method="frequency", conc=quant_reading_FU, threshold=0.1)
+write.table(results_FU, file="C:/Users/MiPC/OneDrive/Escritorio/TFG/ResultadosDecontam/10species/10species_decontamthr01.txt")
