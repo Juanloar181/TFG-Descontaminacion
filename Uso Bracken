@@ -10,9 +10,9 @@
 
 bracken                                                                       #Establece el software a usar, en este caso, se continúa con Bracken.
 -d standard8                                                                  #Establecimiento de la base de datos a usar, se utiliza la misma que en Kraken2, la estándar capada a 8 gb de información.
--i localización/archivosreportkraken/nombredearchivokraken                    #Define la localización y el nombre del archivo de entrada, que debe ser un report de Kracken que Bracken va a utilizar para estimar la abundancia.
--o localización/archivosoutputbracken/nombredearchivooutputBracken            #Define la localización y el nombre del archivo output de salida de Bracken, este archivo es el principal a usar, pues establece la abundancia de cada especie indicando un porcentaje.
--w localización/archivosreportbracken/nombredearchivoreportBracken            #Define la localización y el nombre del archivo en el que se almacena la información de abundancia calculada por Bracken, se almacena en un archivo .txt.
+-i C://localización/archivosreportkraken/nombredearchivokraken                #Define la localización y el nombre del archivo de entrada, que debe ser un report de Kracken que Bracken va a utilizar para estimar la abundancia.
+-o C://localización/archivosoutputbracken/nombredearchivooutputBracken        #Define la localización y el nombre del archivo output de salida de Bracken, este archivo es el principal a usar, pues establece la abundancia de cada especie indicando un porcentaje.
+-w C://localización/archivosreportbracken/nombredearchivoreportBracken        #Define la localización y el nombre del archivo en el que se almacena la información de abundancia calculada por Bracken, se almacena en un archivo .txt.
 -l S                                                                          #Define el nivel taxonómico al que se va a clasificar, normalmente se usa 'S', para clasificar simplemente especies.
 -t valordethreshold                                                           #Si una especie posee un número de lecturas por debajo de este umbral, no será añadido al archivo de salida y se considerará un contaminante.
 -r 75                                                                         #Permite ajustar la longitud de las lecturas que se están usando, en este caso, Kraken aportó como salida lecturas de 75 pares de bases, por lo nque así se ajusta.
