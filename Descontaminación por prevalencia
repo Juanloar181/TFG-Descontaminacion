@@ -23,7 +23,8 @@ abundancia10species$Rep<-rowSums(abundancia10species > 0)
 #Entran dentro del dataframe "selected" aquellas filas (especies) que posean un valor de "Rep" superior al corte.
 selected<-abundancia10species[abundancia10species$Rep>corte,]
 
-#Se construye un nuevo dataframe denominado "result" a partir de la comparación de los organismos prevalentes con la muestra normal, extrayendo así los que que no son prevalentes, considerados contaminantes. Se debe realizar columna a columna.
+#Se construye un nuevo dataframe denominado "result" a partir de la comparación de los organismos prevalentes con la muestra normal.
+#De esta manera se extraen los que que no son prevalentes, considerados contaminantes. Se debe realizar columna a columna.
 result<-df10species[df10species$name0c100t %in% rownames(selected),] 
 
 #Por último, se escribe un archivo "xlsx" a partir del dataframe "result" en la localización deseada de manera que pueda distinguirse facilmente.
