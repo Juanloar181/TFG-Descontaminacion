@@ -7,7 +7,7 @@
 #Código a usar en R
 
 #Definición de un dataframe denominado "abund" a partir de una tabla con la abundancia en todas las condiciones de una determinada muestra.
-#A continuación se define que la separación entre valores es "\t", que es una tabulación, que existe encabezado y que las filas poseen nombres en la primera columna.
+#A continuación se define que la separación entre valores es "\t", que es una tabulación, que existe encabezado y que las filas poseen un nombre asociado a ellas en la primera columna.
 abund<-read.table("C://Localizacion/Archivo/Abundancia/xspecies_Abundance.tab", sep="\t", header = T, row.names=1)
 
 #Serie de transformaciones a una matriz para convertirla a una matriz que pueda ser usado por Decontam.
