@@ -4,13 +4,27 @@
 ############## Descontaminación de muestras metagenómicas ################
 ##########################################################################
 
-
+#Permite el uso del paquete a usar, en este caso es solo "openxlsx", que permite usar hojas de cálculo con el formato xlsx en R.
 library(openxlsx)
-abundancia10species <- read.delim("C:/Users/MiPC/OneDrive/Escritorio/TFG/Abundanciadecontam/10species_Abundance.tsv", header = T, row.names = 1)
-mitadcolumnas <- 3.5
-cutoff <- mitadcolumnas
-abundancia10species$Rep<-rowSums(abundancia10species > 0)
-selected<-abundancia10species[abundancia10species$Rep>cutoff,]
 
-result<-df10species[df10species$name0c100t %in% rownames(selected),]     
-write.xlsx(result, file= "C:/Users/MiPC/OneDrive/Escritorio/TFG/Decontaminación prevalencia/10species/curvaroc10speciesprevalencia.xlsx")
+#Definición de un dataframe denominado "abundanciaxspecies" (variando "x" según la muestra a analizar), a partir de una tabla con la abundancia en todas las condiciones de una determinada muestra.
+#A continuación se define que existe encabezado y que las filas poseen un nombre asociado a ellas en la primera columna.
+abundanciaxspecies <- read.delim("C://Localizacion/Archivo/Abundancia/xspecies_Abundance.tab", header = T, row.names = 1)
+
+#Según el número de condiciones que posee la muestra asociada a ella se define esta variable, por ejemplo, si existen 7 condiciones, esta variable tendrá un valor de 3.5.
+mitadcolumnas <- 3.5
+
+#El valor "corte" será igual al establecido como mitad de columnas, pues se consideran organismos prevalentes los que superen este umbral.
+corte <- mitadcolumnas
+
+#Se añade al final del dataframe una columna llamada "Rep" que indica el número de columnas en las que una especie tiene un valor superior a 0, es decir, las condiciones en las que es detectada.
+abundancia10species$Rep<-rowSums(abundancia10species > 0)
+
+#Entran dentro del dataframe "selected" aquellas filas (especies) que posean un valor de "Rep" superior al corte.
+selected<-abundancia10species[abundancia10species$Rep>corte,]
+
+#Se construye un nuevo dataframe denominado "result" a partir de la comparación de los organismos prevalentes con la muestra normal, extrayendo así los que que no son prevalentes, considerados contaminantes. Se debe realizar columna a columna.
+result<-df10species[df10species$name0c100t %in% rownames(selected),] 
+
+#Por último, se escribe un archivo "xlsx" a partir del dataframe "result" en la localización deseada de manera que pueda distinguirse facilmente.
+write.xlsx(result, file= "file="C://Localización/Archivo/Salida/Prevalencia/xspeciesprevalencia.xlsx")
