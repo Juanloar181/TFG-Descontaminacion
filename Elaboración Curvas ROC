@@ -34,7 +34,8 @@ agregar_curva <- function(predicciones, color) {
 }
 
 
-# Lista de predicciones, en primer lugar se convierte la columna del dataframe que determina el porcentaje en un vector, más tarde se hace lo mismo sobre la columna que determina con valores de 1 o 0 si el dato pertenece a la serie control o a la muestra.
+# Lista de predicciones, en primer lugar se convierte la columna del dataframe que determina el porcentaje en un vector
+#Más tarde se realiza la misma acción sobre la columna que determina con valores de 1 o 0 si el dato pertenece a la serie control o a la muestra.
 # na.omit determina que los valores no válidos o no legibles por R se omitan.
 predicciones <- list(
     prediction(as.vector(na.omit(df$b0confidence10threshold)), as.vector(na.omit(df$label0c10t))),
