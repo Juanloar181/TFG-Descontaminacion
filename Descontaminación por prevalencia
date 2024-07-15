@@ -1,0 +1,16 @@
+##########################################################################
+####### Descontaminación de muestras mediante método de prevalencia ######      
+################################   R   ###################################
+############## Descontaminación de muestras metagenómicas ################
+##########################################################################
+
+
+library(openxlsx)
+abundancia10species <- read.delim("C:/Users/MiPC/OneDrive/Escritorio/TFG/Abundanciadecontam/10species_Abundance.tsv", header = T, row.names = 1)
+mitadcolumnas <- 3.5
+cutoff <- mitadcolumnas
+abundancia10species$Rep<-rowSums(abundancia10species > 0)
+selected<-abundancia10species[abundancia10species$Rep>cutoff,]
+
+result<-df10species[df10species$name0c100t %in% rownames(selected),]     
+write.xlsx(result, file= "C:/Users/MiPC/OneDrive/Escritorio/TFG/Decontaminación prevalencia/10species/curvaroc10speciesprevalencia.xlsx")
