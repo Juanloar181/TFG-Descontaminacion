@@ -14,7 +14,7 @@ library(readxl)
 
 
 #Establecer dataframe a través de un archivo excel en el que se han ido organizando todas las condiciones extraídas de Bracken. Se lee la hoja de cálculo gracias al paquete readxl.
-df <- read_excel("localizacion/archivo/excel/nombrearchivoexcel.xlsx")  
+df <- read_excel("C://localizacion/archivo/excel/nombrearchivoexcel.xlsx")  
 
 
 # Crear un gráfico vacío de información al que más tarde se rellenará con distintos parámetros. Aquí se establece el título, los títulos de los ejes, límites inferiores y superiores...
