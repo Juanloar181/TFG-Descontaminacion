@@ -18,7 +18,8 @@ otu_genus <- t(otu_genus)                 #Transpone la matriz seleccionada.
 dim(abund)                                #Devuelve las dimensiones del dataframe "abund".
 quant_reading_FU<-colSums(abund[,2:9])    #Calcula la suma de las columnas 2 hasta la 9 de "abund" y asigna el resultado a "quant_reading_FU".
 
-#Se aplica la función iscontaminant() de decontam, e aplica sobre la matrix "otu_genus", usando un método de frecuencia, con la concentración definida en "quant_reading_FU" y con un valor de threshold a variar en este caso entre 0.1, 0.25 y 0.5.
+#Se aplica la función iscontaminant() de decontam, e aplica sobre la matrix "otu_genus", usando un método de frecuencia, con la concentración definida en "quant_reading_FU" .
+#El valor de threshold oscila en este caso entre 0.1, 0.25 y 0.5.
 results_FU <- isContaminant(otu_genus, method="frequency", conc=quant_reading_FU, threshold=0.y)
 
 #Se crea una tabla con los resultados derivados de la anterior línea y se crea un archivo en la localización a indicar. Debe elegirse un nombre que facilite la distinción.
