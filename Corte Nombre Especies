@@ -7,8 +7,7 @@
 #Código a usar en un WSL de Linux, en este caso se usó Ubuntu.
 
 
-grep -P "\tS\t" C://localizacion/de/archivo/nombrearchivo   
-#Esta parte del comando busca líneas en el archivo indicado que contienen el patrón \tS\t. 
+omando busca líneas en el archivo indicado que contienen el patrón \tS\t. 
 #\t representa un carácter de tabulación, por lo que \tS\t coincide con líneas que contienen la letra "S" rodeada de caracteres de tabulación
 cut -f 1,6                                                  
 #Procesa la salida de la línea anterior y le ordena la extracción de los campos 1 y 6, que contienen, en este caso, el nombre y el porcentaje de presencia de la especie dada.
